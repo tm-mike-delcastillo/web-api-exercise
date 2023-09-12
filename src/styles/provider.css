@@ -20,6 +20,10 @@
   margin-top: 40px;
 }
 
+#view-provider .text-group > * {
+  word-break: break-all;
+}
+
 #view-provider .text-group .heading {
   font-size: var(--font-size-large);
   margin-bottom: 12px;
