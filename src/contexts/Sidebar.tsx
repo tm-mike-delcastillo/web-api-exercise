@@ -2,7 +2,6 @@ import {
   createContext,
   FC,
   ReactNode,
-  useContext,
   useEffect,
   useState,
 } from 'react'
@@ -40,4 +39,3 @@ export const SidebarContextProvider: FC<{ children: ReactNode }> = ({
   )
 }
 
-export const useSidebarContext = () => useContext(SidebarContext)

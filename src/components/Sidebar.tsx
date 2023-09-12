@@ -1,7 +1,7 @@
 import { FC } from 'react'
-import { useSidebarContext } from '../contexts/Sidebar'
 import { ApiList } from './ApiList'
 import { Overlay } from './Overlay'
+import { useSidebarContext } from '../hooks/useSidebarContext'
 
 export const Sidebar: FC = () => {
   const { isOpen, toggle } = useSidebarContext()

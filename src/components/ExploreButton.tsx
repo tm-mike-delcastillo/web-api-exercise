@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { useSidebarContext } from '../contexts/Sidebar'
+import { useSidebarContext } from '../hooks/useSidebarContext'
 
 export const ExploreButton: FC = () => {
   const { toggle } = useSidebarContext()
