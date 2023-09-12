@@ -1,6 +1,10 @@
+import { CONTACT_KEYS } from "../constants/guru"
+
 export type RawGuruProviders = {
   data: string[]
 }
+
+export type ProviderContactKeys = (typeof CONTACT_KEYS)[number]
 
 export type RawGuruProvider = {
   apis: Record<
@@ -9,10 +13,7 @@ export type RawGuruProvider = {
       added: string
       info: {
         contact: {
-          email: string
-          name: string
-          url: string
-          'x-twitter': string
+          [key in ProviderContactKeys]?: string
         }
         description: string
         title: string
