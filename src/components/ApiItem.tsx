@@ -4,15 +4,12 @@ import { GuruProvider } from '../types/guru'
 import arrowUrl from '../assets/arrow.svg'
 import { Link } from 'react-router-dom'
 import { getProviderLink } from '../utils/domain'
+import { useLogoImage } from '../hooks/useLogoImage'
 
 const BASE_HEIGHT = 52
 const PADDING = 18
 
-type Props = {
-  domain: string
-}
-
-export const ApiItem: FC<Props> = ({ domain }) => {
+export const ApiItem: FC<{ domain: string }> = ({ domain }) => {
   const [providers, setProviders] = useState<GuruProvider[] | null>(null)
   const [loading, setLoading] = useState(false)
   const [loaded, setLoaded] = useState(false)
@@ -60,19 +57,25 @@ export const ApiItem: FC<Props> = ({ domain }) => {
         {loaded &&
           providers !== null &&
           providers.map((provider) => (
-            <Link
-              to={getProviderLink(provider.id, provider.domain)}
-              className="api-sub-item"
-              key={provider.id}
-            >
-              <div
-                className="logo"
-                style={{ backgroundImage: `url(${provider.logoUrl})` }}
-              ></div>
-              <div className="title">{provider.title}</div>
-            </Link>
+            <ProviderLink {...{ provider }} key={provider.id} />
           ))}
       </div>
     </div>
+  )
+}
+
+const ProviderLink: FC<{ provider: GuruProvider }> = ({ provider }) => {
+  const { logoUrl } = useLogoImage(provider.logoUrl)
+  return (
+    <Link
+      to={getProviderLink(provider.id, provider.domain)}
+      className="api-sub-item"
+    >
+      <div
+        className="logo"
+        style={{ backgroundImage: `url(${logoUrl})` }}
+      ></div>
+      <div className="title">{provider.title}</div>
+    </Link>
   )
 }

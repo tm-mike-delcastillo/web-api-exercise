@@ -5,6 +5,7 @@ import { fetchApi } from '../services/api'
 import { GuruProvider, ProviderContactKeys } from '../types/guru'
 import { CONTACT_KEYS_TO_LABEL } from '../utils/guru'
 import { getDecodedDomain } from '../utils/domain'
+import { useLogoImage } from '../hooks/useLogoImage'
 
 type Params = {
   domain: string
@@ -22,6 +23,7 @@ export const Provider: FC = () => {
   const { id, domain } = getDecodedDomain(params.id, params.domain)
 
   const [provider, setProvider] = useState<GuruProvider | null>(null)
+  const { logoUrl } = useLogoImage(provider?.logoUrl)
 
   useEffect(() => {
     fetchApi(domain)
@@ -58,7 +60,7 @@ export const Provider: FC = () => {
     <div id="view-provider">
       <div className="content-container">
         <div className="logo-container">
-          <img src={provider.logoUrl} className="logo" />
+          <img src={logoUrl} className="logo" />
           <div className="title">{provider.title}</div>
         </div>
 
