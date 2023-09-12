@@ -2,7 +2,7 @@ import { CSSProperties, FC, useEffect, useRef, useState } from 'react'
 import { fetchApi } from '../services/api'
 import { GuruProvider } from '../types/guru'
 import arrowUrl from '../assets/arrow.svg'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { getProviderLink } from '../utils/domain'
 import { useLogoImage } from '../hooks/useLogoImage'
 
@@ -10,6 +10,8 @@ const BASE_HEIGHT = 52
 const PADDING = 18
 
 export const ApiItem: FC<{ domain: string }> = ({ domain }) => {
+  const navigate = useNavigate()
+
   const [providers, setProviders] = useState<GuruProvider[] | null>(null)
   const [loading, setLoading] = useState(false)
   const [loaded, setLoaded] = useState(false)
@@ -27,13 +29,14 @@ export const ApiItem: FC<{ domain: string }> = ({ domain }) => {
         })
         .catch((err) => {
           alert(`There was a problem loading API: ${err.message}`)
+          navigate('/')
           setIsOpen(false)
         })
         .finally(() => {
           setLoading(false)
         })
     }
-  }, [domain, isOpen, loaded, loading])
+  }, [domain, isOpen, loaded, loading, navigate])
 
   useEffect(() => {
     const el = apiListRef.current

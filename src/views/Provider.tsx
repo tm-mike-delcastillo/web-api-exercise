@@ -1,6 +1,6 @@
 import { FC, useEffect, useMemo, useState } from 'react'
 import { ExploreButton } from '../components/ExploreButton'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { fetchApi } from '../services/api'
 import { GuruProvider, ProviderContactKeys } from '../types/guru'
 import { CONTACT_KEYS_TO_LABEL } from '../utils/guru'
@@ -19,6 +19,8 @@ type ContactItem = {
 }
 
 export const Provider: FC = () => {
+  const navigate = useNavigate()
+
   const params = useParams<Params>()
   const { id, domain } = getDecodedDomain(params.id, params.domain)
 
@@ -35,8 +37,9 @@ export const Provider: FC = () => {
       })
       .catch((err) => {
         alert(`There was a problem loading API: ${err.message}`)
+        navigate('/')
       })
-  }, [domain, id])
+  }, [domain, id, navigate])
 
   const contactItems = useMemo(() => {
     if (typeof provider?.contact !== 'object') return []
