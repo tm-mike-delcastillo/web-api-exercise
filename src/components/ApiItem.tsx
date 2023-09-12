@@ -1,7 +1,10 @@
-import { FC, useEffect, useState } from 'react'
+import { CSSProperties, FC, useEffect, useRef, useState } from 'react'
 import { fetchApi } from '../services/api'
 import { GuruProvider } from '../types/guru'
 import arrowUrl from '../assets/arrow.svg'
+
+const BASE_HEIGHT = 52
+const PADDING = 18
 
 type Props = {
   domain: string
@@ -12,6 +15,8 @@ export const ApiItem: FC<Props> = ({ domain }) => {
   const [loading, setLoading] = useState(false)
   const [loaded, setLoaded] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
+  const [contentHeight, setContentHeight] = useState(-1)
+  const apiListRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     if (isOpen && !loaded && !loading) {
@@ -31,29 +36,37 @@ export const ApiItem: FC<Props> = ({ domain }) => {
     }
   }, [domain, isOpen, loaded, loading])
 
+  useEffect(() => {
+    const el = apiListRef.current
+    if (contentHeight === -1 && loaded && el !== null) {
+      setContentHeight(BASE_HEIGHT + PADDING + el.offsetHeight)
+    }
+  }, [contentHeight, loaded])
+
   const className = `api-list-item ${isOpen ? 'open' : 'closed'}`
+  const style: CSSProperties = {
+    height: `${isOpen ? contentHeight : BASE_HEIGHT}px`,
+  }
 
   return (
-    <div {...{ className }}>
+    <div {...{ className, style }}>
       <div className="name-container" onClick={() => setIsOpen((b) => !b)}>
         <div className="domain">{domain}</div>
         <img className="arrow" src={arrowUrl} />
       </div>
-      {isOpen && (
-        <div className="api-sub-items">
-          {loaded &&
-            providers !== null &&
-            providers.map((provider) => (
-              <div className="api-sub-item" key={provider.id}>
-                <div
-                  className="logo"
-                  style={{ backgroundImage: `url(${provider.logoUrl})` }}
-                ></div>
-                <div className="title">{provider.title}</div>
-              </div>
-            ))}
-        </div>
-      )}
+      <div className="api-sub-items" ref={apiListRef}>
+        {loaded &&
+          providers !== null &&
+          providers.map((provider) => (
+            <div className="api-sub-item" key={provider.id}>
+              <div
+                className="logo"
+                style={{ backgroundImage: `url(${provider.logoUrl})` }}
+              ></div>
+              <div className="title">{provider.title}</div>
+            </div>
+          ))}
+      </div>
     </div>
   )
 }

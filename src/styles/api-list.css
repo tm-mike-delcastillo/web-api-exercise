@@ -10,6 +10,8 @@
   border-radius: var(--border-radius);
   padding: 10px;
   transition: var(--transition-duration) background-color, var(--transition-duration) height;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .api-list .api-list-item.open {
@@ -44,7 +46,13 @@
 
 .api-list .api-list-item .api-sub-items {
   margin-top: 17px;
-  display: block
+  display: block;
+  opacity: 1;
+  transition: var(--transition-duration) opacity;
+}
+
+.api-list .api-list-item.closed .api-sub-items {
+  opacity: 0;
 }
 
 .api-list .api-list-item .api-sub-items .api-sub-item {
