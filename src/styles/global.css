@@ -1,0 +1,30 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  font-family: sans-serif;
+}
+
+.overlay {
+  z-index: 100;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  transition: 150ms opacity;
+
+  opacity: 0;
+  transform: translateY(-100%);
+}
+
+.overlay.showing {
+  transform: translateY(0);
+}
+
+.overlay.showing:not(.exiting) {
+  opacity: 1;
+}
+
+.overlay.exiting {
+  transition: 200ms opacity;
+}
