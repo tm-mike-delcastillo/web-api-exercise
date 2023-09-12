@@ -2,6 +2,7 @@ import { CSSProperties, FC, useEffect, useRef, useState } from 'react'
 import { fetchApi } from '../services/api'
 import { GuruProvider } from '../types/guru'
 import arrowUrl from '../assets/arrow.svg'
+import { Link } from 'react-router-dom'
 
 const BASE_HEIGHT = 52
 const PADDING = 18
@@ -58,13 +59,17 @@ export const ApiItem: FC<Props> = ({ domain }) => {
         {loaded &&
           providers !== null &&
           providers.map((provider) => (
-            <div className="api-sub-item" key={provider.id}>
+            <Link
+              to={`/${provider.domain}/${provider.id}`}
+              className="api-sub-item"
+              key={provider.id}
+            >
               <div
                 className="logo"
                 style={{ backgroundImage: `url(${provider.logoUrl})` }}
               ></div>
               <div className="title">{provider.title}</div>
-            </div>
+            </Link>
           ))}
       </div>
     </div>

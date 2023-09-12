@@ -1,4 +1,12 @@
-import { createContext, FC, ReactNode, useContext, useState } from 'react'
+import {
+  createContext,
+  FC,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from 'react'
+import { useLocation } from 'react-router-dom'
 
 type SidebarContextData = {
   isOpen: boolean
@@ -13,12 +21,17 @@ export const SidebarContext = createContext<SidebarContextData>({
 export const SidebarContextProvider: FC<{ children: ReactNode }> = ({
   children,
 }) => {
+  const route = useLocation()
   const [isOpen, setIsOpen] = useState(false)
   const toggle: SidebarContextData['toggle'] = (state) => {
     setIsOpen((value) => (typeof state === 'boolean' ? state : !value))
   }
 
   const contextData: SidebarContextData = { isOpen, toggle }
+
+  useEffect(() => {
+    setIsOpen(false)
+  }, [route])
 
   return (
     <SidebarContext.Provider value={contextData}>
