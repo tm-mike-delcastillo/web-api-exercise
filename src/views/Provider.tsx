@@ -11,6 +11,7 @@ type Params = {
 }
 
 type ContactItem = {
+  key: ProviderContactKeys
   label: string
   value: string
 }
@@ -44,7 +45,7 @@ export const Provider: FC = () => {
       const value = provider.contact[key]
       const label = CONTACT_KEYS_TO_LABEL[key]
       if (value?.trim()) {
-        contactItems.push({ label, value })
+        contactItems.push({ key, label, value })
       }
     }
 
@@ -72,7 +73,7 @@ export const Provider: FC = () => {
         <a
           href={provider.swaggerUrl}
           target="_blank"
-          rel="no-referrer"
+          rel="noopener noreferrer"
           className="swagger-link"
         >
           {provider.swaggerUrl}
@@ -85,9 +86,21 @@ export const Provider: FC = () => {
           <table className="contact-">
             <tbody>
               {contactItems.map((item) => (
-                <tr key={item.label}>
+                <tr key={item.key}>
                   <td>{item.label}</td>
-                  <td>{item.value}</td>
+                  <td>
+                    {item.key === 'url' ? (
+                      <a
+                        href={item.value}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {item.value}
+                      </a>
+                    ) : (
+                      item.value
+                    )}
+                  </td>
                 </tr>
               ))}
             </tbody>
