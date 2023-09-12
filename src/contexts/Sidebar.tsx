@@ -1,10 +1,4 @@
-import {
-  createContext,
-  FC,
-  ReactNode,
-  useEffect,
-  useState,
-} from 'react'
+import { createContext, FC, ReactNode, useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 
 type SidebarContextData = {
@@ -38,4 +32,3 @@ export const SidebarContextProvider: FC<{ children: ReactNode }> = ({
     </SidebarContext.Provider>
   )
 }
-

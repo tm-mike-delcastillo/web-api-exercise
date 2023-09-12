@@ -5,6 +5,9 @@ export type RawGuruProviders = {
 }
 
 export type ProviderContactKeys = (typeof CONTACT_KEYS)[number]
+export type RawGuruProviderContact = {
+  [key in ProviderContactKeys]?: string
+}
 
 export type RawGuruProvider = {
   apis: Record<
@@ -12,9 +15,7 @@ export type RawGuruProvider = {
     {
       added: string
       info: {
-        contact: {
-          [key in ProviderContactKeys]?: string
-        }
+        contact: RawGuruProviderContact
         description: string
         title: string
         version: string
@@ -40,6 +41,6 @@ export type GuruProvider = {
   title: string
   description: string
   swaggerUrl: string
-  contact: RawGuruProvider['apis'][string]['info']['contact']
+  contact: RawGuruProviderContact
   logoUrl: string
 }

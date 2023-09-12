@@ -36,7 +36,7 @@ export const Provider: FC = () => {
   }, [domain, id])
 
   const contactItems = useMemo(() => {
-    if (typeof provider?.contact !== "object") return []
+    if (typeof provider?.contact !== 'object') return []
 
     const contactItems: ContactItem[] = []
     const keys = Object.keys(provider.contact) as ProviderContactKeys[]
