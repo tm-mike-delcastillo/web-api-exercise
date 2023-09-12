@@ -19,7 +19,7 @@ const Layout: FC = () => {
 
   return (
     <SidebarContextProvider>
-      <Outlet />
+      <Outlet key={route.pathname} />
       <Sidebar />
     </SidebarContextProvider>
   )
