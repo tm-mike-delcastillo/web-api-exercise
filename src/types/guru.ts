@@ -1,4 +1,4 @@
-import { CONTACT_KEYS } from "../constants/guru"
+import { CONTACT_KEYS } from '../constants/guru'
 
 export type RawGuruProviders = {
   data: string[]
