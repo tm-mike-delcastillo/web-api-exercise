@@ -7,7 +7,9 @@
   margin: 10px;
   border-radius: var(--border-radius);
   padding: 10px;
-  transition: var(--transition-duration) background-color, var(--transition-duration) height;
+  transition:
+    var(--transition-duration) background-color,
+    var(--transition-duration) height;
   box-sizing: border-box;
   overflow: hidden;
 }
@@ -20,7 +22,7 @@
   display: flex;
   justify-content: space-between;
   cursor: pointer;
-  gap: 1em
+  gap: 1em;
 }
 
 .api-list .api-list-item .name-container .domain {

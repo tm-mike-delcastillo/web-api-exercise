@@ -3,7 +3,7 @@ import { fetchApi } from '../services/api'
 import { GuruProvider } from '../types/guru'
 import arrowUrl from '../assets/arrow.svg'
 import { Link } from 'react-router-dom'
-import { generateDomainLink } from '../utils/domain'
+import { getProviderLink } from '../utils/domain'
 
 const BASE_HEIGHT = 52
 const PADDING = 18
@@ -61,7 +61,7 @@ export const ApiItem: FC<Props> = ({ domain }) => {
           providers !== null &&
           providers.map((provider) => (
             <Link
-              to={generateDomainLink(provider.id, provider.domain)}
+              to={getProviderLink(provider.id, provider.domain)}
               className="api-sub-item"
               key={provider.id}
             >

@@ -5,14 +5,14 @@
   --font-size-large: 32px;
 
   --color-text: white;
-  --color-text-medium: #F5F5F5;
-  --color-main: #00A1D4;
-  --color-background: #42607B;
-  --color-dark: #1A2632;
+  --color-text-medium: #f5f5f5;
+  --color-main: #00a1d4;
+  --color-background: #42607b;
+  --color-dark: #1a2632;
   --color-overlay: rgba(0, 0, 0, 0.7);
 
   --font-family: Inter, sans-serif;
-  
+
   --logo-size-small: 32px;
   --logo-size-large: 120px;
 
@@ -21,7 +21,9 @@
   --border-radius: 8px;
 }
 
-html, body, #root {
+html,
+body,
+#root {
   width: 100%;
   height: 100%;
   margin: 0;
