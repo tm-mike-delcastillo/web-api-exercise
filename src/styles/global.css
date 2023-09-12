@@ -4,6 +4,7 @@
   --font-size-large: 32px;
 
   --color-text: white;
+  --color-text-medium: #F5F5F5;
   --color-main: #00A1D4;
   --color-background: #42607B;
   --color-dark: #1A2632;
@@ -75,6 +76,7 @@ html, body, #root {
   font-size: var(--font-size-display);
   font-weight: 500;
   text-align: center;
+  color: var(--color-text-medium);
 }
 
 #view-index {
