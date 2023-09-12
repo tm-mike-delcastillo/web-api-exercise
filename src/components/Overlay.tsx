@@ -1,7 +1,6 @@
 import { FC, MouseEventHandler, useEffect, useMemo, useState } from 'react'
 
-const ANIM_IN_DURATION = 300
-const ANIM_OUT_DURATION = 300
+const ANIMATION_DURATION = 300
 
 type Props = {
   show: boolean
@@ -35,7 +34,7 @@ export const Overlay: FC<Props> = ({ show, onClick }) => {
       setTimeoutId(
         setTimeout(() => {
           setState(false, true, false)
-        }, ANIM_IN_DURATION)
+        }, ANIMATION_DURATION)
       )
     }
 
@@ -45,7 +44,7 @@ export const Overlay: FC<Props> = ({ show, onClick }) => {
       setTimeoutId(
         setTimeout(() => {
           setState(false, false, false)
-        }, ANIM_OUT_DURATION)
+        }, ANIMATION_DURATION)
       )
     }
   }, [show, showing, timeoutId, entering, exiting])
