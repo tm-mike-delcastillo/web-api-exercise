@@ -6,10 +6,12 @@ import { Overlay } from './Overlay'
 export const Sidebar: FC = () => {
   const { isOpen, toggle } = useSidebarContext()
 
+  const className = `sidebar ${isOpen ? 'open' : 'closed'}`
+
   return (
     <>
       <Overlay show={isOpen} onClick={() => toggle(false)} />
-      <div className="sidebar">
+      <div {...{ className }}>
         <div className="sidebar-header">Select Provider</div>
         <ApiList />
       </div>

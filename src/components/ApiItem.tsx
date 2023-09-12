@@ -44,7 +44,10 @@ export const ApiItem: FC<Props> = ({ domain }) => {
           providers !== null &&
           providers.map((provider) => (
             <div className="api-sub-item" key={provider.id}>
-              <img src={provider.logoUrl} alt="logo" />
+              <div
+                className="logo"
+                style={{ backgroundImage: `url(${provider.logoUrl})` }}
+              ></div>
               <div className="title">{provider.title}</div>
             </div>
           ))}
