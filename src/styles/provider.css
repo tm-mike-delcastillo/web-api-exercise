@@ -22,6 +22,7 @@
 
 #view-provider .text-group > * {
   word-break: break-all;
+  white-space: pre-wrap;
 }
 
 #view-provider .text-group .heading {
