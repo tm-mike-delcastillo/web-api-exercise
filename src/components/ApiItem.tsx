@@ -1,6 +1,7 @@
 import { FC, useEffect, useState } from 'react'
 import { fetchApi } from '../services/api'
 import { GuruProvider } from '../types/guru'
+import arrowUrl from '../assets/arrow.svg'
 
 type Props = {
   domain: string
@@ -36,22 +37,24 @@ export const ApiItem: FC<Props> = ({ domain }) => {
     <div {...{ className }}>
       <div className="name-container" onClick={() => setIsOpen((b) => !b)}>
         <div className="domain">{domain}</div>
-        <div className="arrow">arrow</div>
+        <img className="arrow" src={arrowUrl} />
       </div>
-      <div className="api-sub-items">
-        {loading && <div className="loading">Loading...</div>}
-        {loaded &&
-          providers !== null &&
-          providers.map((provider) => (
-            <div className="api-sub-item" key={provider.id}>
-              <div
-                className="logo"
-                style={{ backgroundImage: `url(${provider.logoUrl})` }}
-              ></div>
-              <div className="title">{provider.title}</div>
-            </div>
-          ))}
-      </div>
+      {isOpen && (
+        <div className="api-sub-items">
+          {loading && <div className="loading">Loading...</div>}
+          {loaded &&
+            providers !== null &&
+            providers.map((provider) => (
+              <div className="api-sub-item" key={provider.id}>
+                <div
+                  className="logo"
+                  style={{ backgroundImage: `url(${provider.logoUrl})` }}
+                ></div>
+                <div className="title">{provider.title}</div>
+              </div>
+            ))}
+        </div>
+      )}
     </div>
   )
 }

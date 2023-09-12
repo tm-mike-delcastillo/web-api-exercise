@@ -1,5 +1,6 @@
 :root {
   --font-size-body: 16px;
+  --font-size-title: 20px;
   --font-size-display: 24px;
   --font-size-large: 32px;
 
@@ -11,8 +12,12 @@
   --color-overlay: rgba(0, 0, 0, 0.7);
 
   --font-family: Inter, sans-serif;
+  
   --content-max-width: 960px;
   --sidebar-width: 520px;
+  --arrow-size: 32px;
+  --logo-size-small: 32px;
+  --logo-size-large: 120px;
 }
 
 html, body, #root {
@@ -47,36 +52,6 @@ html, body, #root {
 
 .overlay.exiting {
   transition: 200ms opacity;
-}
-
-.sidebar {
-  position: fixed;
-  height: 100%;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  overflow: auto;
-  z-index: 200;
-  transition: transform 200ms;
-  padding: 20px;
-  max-width: var(--sidebar-width);
-  width: 100%;
-  background-color: var(--color-background);
-}
-
-.sidebar.closed {
-  transform: translateX(100%);
-}
-
-.sidebar.open {
-  transform: translateX(0);
-}
-
-.sidebar .sidebar-header{
-  font-size: var(--font-size-display);
-  font-weight: 500;
-  text-align: center;
-  color: var(--color-text-medium);
 }
 
 #view-index {

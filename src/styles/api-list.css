@@ -1,0 +1,61 @@
+.api-list {
+  --arrow-size: 32px;
+  --logo-size-small: 32px;
+  --logo-size-large: 120px;
+}
+
+.api-list .api-list-item {
+
+}
+
+.api-list .api-list-item .name-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.api-list .api-list-item .name-container .domain {
+  font-size: var(--font-size-display);
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+.api-list .api-list-item .name-container .arrow {
+  flex-grow: 0;
+  flex-shrink: 0;
+  transition: 500ms transform;
+}
+
+.api-list .api-list-item.open .name-container .arrow {
+  transform: rotate(0);
+}
+
+.api-list .api-list-item.closed .name-container .arrow {
+  transform: rotate(180deg);
+}
+
+.api-list .api-list-item .api-sub-items {
+  margin-top: 17px;
+}
+
+.api-list .api-list-item .api-sub-items .api-sub-item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+}
+
+.api-list .api-list-item .api-sub-items .api-sub-item .logo {
+  width: var(--logo-size-small);
+  height: var(--logo-size-small);
+  flex-basis: var(--logo-size-small);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+.api-list .api-list-item .api-sub-items .api-sub-item .title {
+  font-size: var(--font-size-title);
+  flex-grow: 1;
+  flex-shrink: 1;
+}

@@ -1,0 +1,29 @@
+.sidebar {
+  position: fixed;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  overflow: auto;
+  z-index: 200;
+  transition: transform 200ms;
+  padding: 20px;
+  max-width: var(--sidebar-width);
+  width: 100%;
+  background-color: var(--color-background);
+}
+
+.sidebar.closed {
+  transform: translateX(100%);
+}
+
+.sidebar.open {
+  transform: translateX(0);
+}
+
+.sidebar .sidebar-header{
+  font-size: var(--font-size-display);
+  font-weight: 500;
+  text-align: center;
+  color: var(--color-text-medium);
+}
