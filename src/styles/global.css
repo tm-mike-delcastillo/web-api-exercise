@@ -13,6 +13,9 @@
 
   --font-family: Inter, sans-serif;
   
+  --logo-size-small: 32px;
+  --logo-size-large: 120px;
+
   --content-max-width: 960px;
   --sidebar-width: 520px;
   --border-radius: 8px;
@@ -52,6 +55,13 @@ html, body, #root {
   transition: 300ms opacity;
 }
 
+.content-container {
+  width: 90%;
+  max-width: var(--content-max-width);
+  margin: auto;
+  margin-top: 58px;
+}
+
 .explore-button {
   appearance: none;
   border: 0;
@@ -71,4 +81,14 @@ html, body, #root {
   display: grid;
   justify-content: center;
   align-content: center;
+}
+
+a {
+  color: var(--color-text);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }

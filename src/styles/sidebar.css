@@ -11,6 +11,7 @@
   max-width: var(--sidebar-width);
   width: 100%;
   background-color: var(--color-background);
+  box-sizing: border-box;
 }
 
 .sidebar.closed {

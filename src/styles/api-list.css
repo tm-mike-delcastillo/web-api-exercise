@@ -1,7 +1,5 @@
 .api-list {
   --arrow-size: 32px;
-  --logo-size-small: 32px;
-  --logo-size-large: 120px;
   --transition-duration: 300ms;
 }
 
@@ -22,12 +20,16 @@
   display: flex;
   justify-content: space-between;
   cursor: pointer;
+  gap: 1em
 }
 
 .api-list .api-list-item .name-container .domain {
   font-size: var(--font-size-display);
   flex-grow: 1;
   flex-shrink: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .api-list .api-list-item .name-container .arrow {

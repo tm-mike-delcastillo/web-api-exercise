@@ -1,0 +1,37 @@
+#view-provider .logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+#view-provider .logo-container .logo {
+  height: var(--logo-size-large);
+  width: auto;
+  flex-grow: 0;
+  flex-grow: 0;
+}
+
+#view-provider .logo-container .title {
+  font-size: var(--font-size-large);
+}
+
+#view-provider .text-group {
+  margin-top: 40px;
+}
+
+#view-provider .text-group .heading {
+  font-size: var(--font-size-large);
+  margin-bottom: 12px;
+}
+
+#view-provider .text-group table tbody tr td:nth-of-type(2) {
+  padding: 0.25em 0;
+  padding-left: 0.75em;
+}
+
+#view-provider .explore-button-container {
+  padding: 40px 0;
+  display: flex;
+  justify-content: center;
+}
