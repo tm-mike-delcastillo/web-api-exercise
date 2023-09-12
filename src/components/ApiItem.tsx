@@ -41,7 +41,6 @@ export const ApiItem: FC<Props> = ({ domain }) => {
       </div>
       {isOpen && (
         <div className="api-sub-items">
-          {loading && <div className="loading">Loading...</div>}
           {loaded &&
             providers !== null &&
             providers.map((provider) => (

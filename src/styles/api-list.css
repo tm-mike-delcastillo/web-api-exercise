@@ -2,15 +2,24 @@
   --arrow-size: 32px;
   --logo-size-small: 32px;
   --logo-size-large: 120px;
+  --transition-duration: 500ms;
 }
 
 .api-list .api-list-item {
+  margin: 10px;
+  border-radius: var(--border-radius);
+  padding: 10px;
+  transition: var(--transition-duration) background-color, var(--transition-duration) height;
+}
 
+.api-list .api-list-item.open {
+  background-color: var(--color-dark);
 }
 
 .api-list .api-list-item .name-container {
   display: flex;
   justify-content: space-between;
+  cursor: pointer;
 }
 
 .api-list .api-list-item .name-container .domain {
@@ -22,7 +31,7 @@
 .api-list .api-list-item .name-container .arrow {
   flex-grow: 0;
   flex-shrink: 0;
-  transition: 500ms transform;
+  transition: var(--transition-duration) transform;
 }
 
 .api-list .api-list-item.open .name-container .arrow {
@@ -35,13 +44,16 @@
 
 .api-list .api-list-item .api-sub-items {
   margin-top: 17px;
+  display: block
 }
 
 .api-list .api-list-item .api-sub-items .api-sub-item {
+  margin-top: 12px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   gap: 8px;
+  cursor: pointer;
 }
 
 .api-list .api-list-item .api-sub-items .api-sub-item .logo {
