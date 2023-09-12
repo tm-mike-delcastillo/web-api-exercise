@@ -1,7 +1,7 @@
 import { FC, MouseEventHandler, useEffect, useMemo, useState } from 'react'
 
-const ANIM_IN_DURATION = 150
-const ANIM_OUT_DURATION = 200
+const ANIM_IN_DURATION = 300
+const ANIM_OUT_DURATION = 300
 
 type Props = {
   show: boolean

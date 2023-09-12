@@ -2,7 +2,7 @@
   --arrow-size: 32px;
   --logo-size-small: 32px;
   --logo-size-large: 120px;
-  --transition-duration: 500ms;
+  --transition-duration: 300ms;
 }
 
 .api-list .api-list-item {
