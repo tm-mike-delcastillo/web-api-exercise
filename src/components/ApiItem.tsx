@@ -28,7 +28,7 @@ export const ApiItem: FC<Props> = ({ domain }) => {
           setLoading(false)
         })
     }
-  }, [isOpen, loaded, loading])
+  }, [domain, isOpen, loaded, loading])
 
   const className = `api-list-item ${isOpen ? 'open' : 'closed'}`
 
