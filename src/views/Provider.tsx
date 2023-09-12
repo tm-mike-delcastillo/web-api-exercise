@@ -3,7 +3,8 @@ import { ExploreButton } from '../components/ExploreButton'
 import { useParams } from 'react-router-dom'
 import { fetchApi } from '../services/api'
 import { GuruProvider, ProviderContactKeys } from '../types/guru'
-import { CONTACT_KEYS_TO_LABEL } from '../constants/guru'
+import { CONTACT_KEYS_TO_LABEL } from '../utils/guru'
+import { getDecodedDomain } from '../utils/domain'
 
 type Params = {
   domain: string
@@ -18,8 +19,7 @@ type ContactItem = {
 
 export const Provider: FC = () => {
   const params = useParams<Params>()
-  const id = params.id!
-  const domain = params.domain!
+  const { id, domain } = getDecodedDomain(params.id, params.domain)
 
   const [provider, setProvider] = useState<GuruProvider | null>(null)
 
@@ -61,55 +61,55 @@ export const Provider: FC = () => {
           <img src={provider.logoUrl} className="logo" />
           <div className="title">{provider.title}</div>
         </div>
-      </div>
 
-      <div className="text-group">
-        <div className="heading">Description</div>
-        <p dangerouslySetInnerHTML={{ __html: provider.description }}></p>
-      </div>
-
-      <div className="text-group">
-        <div className="heading">Swagger</div>
-        <a
-          href={provider.swaggerUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="swagger-link"
-        >
-          {provider.swaggerUrl}
-        </a>
-      </div>
-
-      {contactItems.length > 0 && (
         <div className="text-group">
-          <div className="heading">Contact</div>
-          <table className="contact-">
-            <tbody>
-              {contactItems.map((item) => (
-                <tr key={item.key}>
-                  <td>{item.label}</td>
-                  <td>
-                    {item.key === 'url' ? (
-                      <a
-                        href={item.value}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {item.value}
-                      </a>
-                    ) : (
-                      item.value
-                    )}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <div className="heading">Description</div>
+          <p dangerouslySetInnerHTML={{ __html: provider.description }}></p>
         </div>
-      )}
 
-      <div className="explore-button-container">
-        <ExploreButton />
+        <div className="text-group">
+          <div className="heading">Swagger</div>
+          <a
+            href={provider.swaggerUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="swagger-link"
+          >
+            {provider.swaggerUrl}
+          </a>
+        </div>
+
+        {contactItems.length > 0 && (
+          <div className="text-group">
+            <div className="heading">Contact</div>
+            <table className="contact-">
+              <tbody>
+                {contactItems.map((item) => (
+                  <tr key={item.key}>
+                    <td>{item.label}</td>
+                    <td>
+                      {item.key === 'url' ? (
+                        <a
+                          href={item.value}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {item.value}
+                        </a>
+                      ) : (
+                        item.value
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+
+        <div className="explore-button-container">
+          <ExploreButton />
+        </div>
       </div>
     </div>
   )
